@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_Fog: 1
+  m_FogColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.094
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1888,11 +1888,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226609064}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &233267130 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-  m_PrefabInstance: {fileID: 1621207062777441397}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &246737551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,7 +2983,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17820407, y: -0, z: -0, w: 0.9839936}
-  m_LocalPosition: {x: 0, y: 2.73, z: -10.01}
+  m_LocalPosition: {x: 0, y: 3.018, z: -9.605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4723,7 +4718,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8640,7 +8635,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1816617732}
-  - {fileID: 233267130}
   m_Father: {fileID: 1578154657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882887941
@@ -8723,7 +8717,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9799,7 +9793,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10247,7 +10241,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10638,7 +10632,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11024,6 +11018,10 @@ MonoBehaviour:
   muzzle: {fileID: 880213206}
   target: {fileID: 1388124333}
   beamRadius: 0.04
+  extendDuration: 0.3
+  connectedDuration: 1.1
+  radiusPulse: 0.16
+  pulseSpeed: 32
 --- !u!1 &1301504928
 GameObject:
   m_ObjectHideFlags: 0
@@ -12025,7 +12023,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13051,7 +13049,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13213,7 +13211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaserController
   taserMuzzle: {fileID: 880213206}
   taserTarget: {fileID: 1388124333}
-  taserProjectilePrefab: {fileID: 6932195428880548890, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
   hitVfxPrefab: {fileID: 3471536359399014142, guid: 4fa074bc22a26c34cb4dcb523a67f329, type: 3}
   taserBeam: {fileID: 1289108476}
 --- !u!1 &1582151771
@@ -14153,7 +14150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14265,7 +14262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14489,7 +14486,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14646,7 +14643,7 @@ GameObject:
   - component: {fileID: 1816617734}
   - component: {fileID: 1816617733}
   m_Layer: 0
-  m_Name: Taser_Debug
+  m_Name: Taser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15394,7 +15391,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65afcdda5f0c76948971be6714e7cbf2, type: 2}
+  - {fileID: 2100000, guid: 8feb62231d4be1e459fa82bed1966a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16718,63 +16715,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121413121}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1621207062777441397
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 880213206}
-    m_Modifications:
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.70684683
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.70686346
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.018872797
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.018854067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5759648545253931994, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 41.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932195428880548890, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
-      propertyPath: m_Name
-      value: TaserProjectile
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5fadfc773c5d1c844a775db158a7dd27, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

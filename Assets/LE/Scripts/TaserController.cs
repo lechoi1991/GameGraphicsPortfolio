@@ -7,7 +7,6 @@ public class TaserController : MonoBehaviour
     [Header("Taser References")]
     [SerializeField] private Transform taserMuzzle;
     [SerializeField] private Transform taserTarget;
-    [SerializeField] private GameObject taserProjectilePrefab;
 
     [Header("Hit VFX")]
     [SerializeField] private GameObject hitVfxPrefab;
@@ -15,9 +14,18 @@ public class TaserController : MonoBehaviour
     [Header("Taser Beam")]
     [SerializeField] private GameObject taserBeam;
 
-    private bool isFiring = false;
-
+    private TaserBeamController beamController;
     private GameObject activeHitVfx;
+    private bool isFiring;
+
+    private void Awake()
+    {
+        if (taserBeam != null)
+        {
+            beamController = taserBeam.GetComponent<TaserBeamController>();
+            taserBeam.SetActive(false);
+        }
+    }
 
     private void Update()
     {
@@ -33,106 +41,85 @@ public class TaserController : MonoBehaviour
         if (isFiring)
             return;
 
-        if (taserMuzzle == null ||
-            taserTarget == null ||
-            taserProjectilePrefab == null)
+        if (taserMuzzle == null || taserTarget == null || beamController == null)
         {
             Debug.LogWarning(
-                "TaserController: Reference가 설정되지 않았습니다."
+                "TaserController: Muzzle, Target 또는 Beam reference가 설정되지 않았습니다."
             );
-
             return;
         }
 
         isFiring = true;
+        RemoveHitVfx();
 
-        GameObject projectile = Instantiate(
-            taserProjectilePrefab,
-            taserMuzzle.position,
-            taserMuzzle.rotation
-        );
-
-        if (taserBeam != null)
-        {
-            taserBeam.SetActive(true);
-        }
-
-        TaserProjectile taserProjectile =
-            projectile.GetComponent<TaserProjectile>();
-
-        if (taserProjectile == null)
-        {
-            Debug.LogError(
-                "TaserProjectile 컴포넌트를 찾을 수 없습니다."
-            );
-
-            Destroy(projectile);
-            isFiring = false;
-
-            return;
-        }
-
-        taserProjectile.Initialize(
-            taserTarget,
-            OnTaserHit
-        );
+        beamController.PlayBeam(OnBeamConnected, OnBeamFinished);
     }
 
-    private void OnTaserHit()
+    private void OnBeamConnected()
     {
-        Debug.Log("Taser 공격 성공!");
+        Debug.Log("Taser beam connected!");
+        SpawnHitVfx();
+    }
 
+    private void OnBeamFinished()
+    {
+        RemoveHitVfx();
         isFiring = false;
-
-        if (taserBeam != null)
-        {
-            taserBeam.SetActive(false);
-        }
-
-        SpawnHitVFX();
     }
 
-    private void SpawnHitVFX()
+    private void SpawnHitVfx()
     {
-        if (hitVfxPrefab == null)
+        if (hitVfxPrefab == null || taserTarget == null)
         {
             Debug.LogWarning(
-                "TaserController: Hit VFX Prefab이 설정되지 않았습니다."
+                "TaserController: Hit VFX Prefab 또는 Taser Target이 설정되지 않았습니다."
             );
-
             return;
         }
 
-        if (taserTarget == null)
-        {
-            Debug.LogWarning(
-                "TaserController: Taser Target이 없습니다."
-            );
-
-            return;
-        }
-
-        // 기존 VFX가 남아 있다면 제거
-        if (activeHitVfx != null)
-        {
-            Destroy(activeHitVfx);
-        }
-
-        // 적중 지점에 VFX 생성
         activeHitVfx = Instantiate(
             hitVfxPrefab,
             taserTarget.position,
-            Quaternion.identity,
+            taserTarget.rotation,
             taserTarget
         );
 
-        // 코드에서 VFX 실행
-        VisualEffect vfx =
-            activeHitVfx.GetComponent<VisualEffect>();
-
+        // 기존 VFX Graph의 방사형 불꽃은 끄고, 캐릭터 실루엣을 감싸는
+        // 감전 전기 아크로 교체한다.
+        VisualEffect vfx = activeHitVfx.GetComponent<VisualEffect>();
         if (vfx != null)
         {
-            vfx.Play();
+            vfx.Stop();
+            vfx.enabled = false;
         }
+
+        Material electricMaterial = null;
+        Renderer beamRenderer = taserBeam != null
+            ? taserBeam.GetComponent<Renderer>()
+            : null;
+
+        if (beamRenderer != null)
+        {
+            electricMaterial = beamRenderer.sharedMaterial;
+        }
+
+        ElectricShockVfxController shockVfx =
+            activeHitVfx.AddComponent<ElectricShockVfxController>();
+        shockVfx.Initialize(taserTarget, electricMaterial);
+    }
+
+    private void RemoveHitVfx()
+    {
+        if (activeHitVfx == null)
+            return;
+
+        Destroy(activeHitVfx);
+        activeHitVfx = null;
+    }
+
+    private void OnDisable()
+    {
+        RemoveHitVfx();
+        isFiring = false;
     }
 }
