@@ -12,6 +12,9 @@ public class TaserController : MonoBehaviour
     [Header("Hit VFX")]
     [SerializeField] private GameObject hitVfxPrefab;
 
+    [Header("Taser Beam")]
+    [SerializeField] private GameObject taserBeam;
+
     private bool isFiring = false;
 
     private GameObject activeHitVfx;
@@ -49,6 +52,11 @@ public class TaserController : MonoBehaviour
             taserMuzzle.rotation
         );
 
+        if (taserBeam != null)
+        {
+            taserBeam.SetActive(true);
+        }
+
         TaserProjectile taserProjectile =
             projectile.GetComponent<TaserProjectile>();
 
@@ -75,6 +83,11 @@ public class TaserController : MonoBehaviour
         Debug.Log("Taser 공격 성공!");
 
         isFiring = false;
+
+        if (taserBeam != null)
+        {
+            taserBeam.SetActive(false);
+        }
 
         SpawnHitVFX();
     }
