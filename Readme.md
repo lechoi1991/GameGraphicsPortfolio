@@ -1,7 +1,7 @@
 # 설치방법
 
 1. 유니티 에디터 6000.6.0f1 버전으로 프로젝트를 엽니다.
-2. Project -> Scenes -> SampleScene.unity 파일을 더블클릭하여 씬을 엽니다.
+2. Project -> Assets -> Scenes -> SampleScene.unity 파일을 더블클릭하여 씬을 엽니다.
 3. 플레이버튼을 누르고 Space키를 조작합니다.
 
 # 구현의도
@@ -9,3 +9,7 @@
 눈 내리는 밤 도시의 거리에서 경찰이 도둑에게 테이저건을 맞추면 테이저건에 연결되고 감전되는 효과 발생
 
 자세한 사항은 [구현설명서](ImplementationGuide.md)에서 확인할 수 있습니다.
+
+# 에셋위치
+
+자체 제작한 에셋들은 Project -> Assets -> LE 폴더 내부에 있습니다.
